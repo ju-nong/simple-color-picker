@@ -2,7 +2,9 @@
     <footer>
         <p>
             &copy; 2023
-            <a href="https://github.com/ju-nong/color-picker" target="_blank"
+            <a
+                href="https://github.com/ju-nong/simple-color-picker"
+                target="_blank"
                 >ju-nong</a
             >. All Right Reserved.
         </p>
