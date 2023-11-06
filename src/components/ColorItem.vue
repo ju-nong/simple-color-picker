@@ -3,6 +3,7 @@
         <button @click="handleCopy(props.hex)">{{ props.hex }}</button>
         <button @click="handleCopy(rgb)">{{ rgb }}</button>
         <button
+            class="remove-color-button"
             :style="`--color-item: ${props.hex}`"
             @click="emits('onRemoveColor')"
         >
@@ -28,6 +29,8 @@
 <script setup lang="ts">
 import { defineProps, defineEmits, computed } from "vue";
 
+import { useTemplate } from "../stores";
+
 const props = defineProps({
     hex: {
         type: String,
@@ -36,6 +39,8 @@ const props = defineProps({
 });
 
 const emits = defineEmits(["onRemoveColor"]);
+
+const templateStore = useTemplate();
 
 const rgb = computed(() => {
     const validHex = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(
@@ -53,6 +58,8 @@ const rgb = computed(() => {
 function handleCopy(color: string) {
     try {
         navigator.clipboard.writeText(color);
+
+        templateStore.actionCopy();
     } catch (error) {
         console.log(error);
     }

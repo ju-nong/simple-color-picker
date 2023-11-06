@@ -7,6 +7,10 @@
             @onRemoveColor="colorStore.removeColor(index)"
         />
     </ul>
+
+    <p v-show="colorStore.list.length" class="copy-guide">
+        Click to copy to the clipboard
+    </p>
 </template>
 
 <script setup lang="ts">
@@ -42,7 +46,7 @@ const colorStore = useColor();
                 transform: translate(-50%);
             }
 
-            &:last-child {
+            &.remove-color-button {
                 border-radius: 100%;
                 width: 20px;
                 height: 20px;
@@ -66,7 +70,19 @@ const colorStore = useColor();
                     opacity: 0;
                 }
             }
+
+            &:not(.remove-color-button) {
+                transition: color 0.3s;
+
+                &:hover {
+                    color: rgb(26, 115, 232);
+                }
+            }
         }
     }
+}
+
+.copy-guide {
+    text-align: center;
 }
 </style>
