@@ -3,6 +3,7 @@
     "description": "This is Simple Color Picker",
     "version": "0.0.1",
     "manifest_version": 3,
+    "permissions": ["clipboardWrite"],
     "action": {
         "default_popup": "index.html"
     }
