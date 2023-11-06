@@ -3,4 +3,6 @@ import App from "./App.vue";
 
 import "./style.scss";
 
-createApp(App).mount("#app");
+import { createPinia } from "pinia";
+
+createApp(App).use(createPinia()).mount("#app");
