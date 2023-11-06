@@ -1,5 +1,5 @@
 <template>
-    <ul class="color-list">
+    <ul v-show="hasColor" class="color-list">
         <ColorItem
             v-for="(color, index) in colorStore.list"
             :key="index"
@@ -8,17 +8,17 @@
         />
     </ul>
 
-    <p v-show="colorStore.list.length" class="copy-guide">
-        Click to copy to the clipboard
-    </p>
+    <p v-show="hasColor" class="copy-guide">Click to copy to the clipboard</p>
 </template>
 
 <script setup lang="ts">
+import { computed } from "vue";
 import { ColorItem } from "./index";
 
 import { useColor } from "../stores";
 
 const colorStore = useColor();
+const hasColor = computed(() => colorStore.list.length);
 </script>
 
 <style lang="scss">
@@ -84,5 +84,7 @@ const colorStore = useColor();
 
 .copy-guide {
     text-align: center;
+    color: #888;
+    margin-top: -0.5rem;
 }
 </style>

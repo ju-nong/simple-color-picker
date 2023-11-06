@@ -37,7 +37,7 @@ async function handleColorPick() {
 
 <style lang="scss" scoped>
 button {
-    padding: 1rem 0;
+    padding-top: 1rem;
     > svg {
         width: 40px;
         height: 40px;

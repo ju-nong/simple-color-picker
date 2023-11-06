@@ -13,6 +13,9 @@
 
 <style lang="scss">
 footer {
+    padding: 0.5rem 0;
+    background-color: #eee;
+
     > p {
         text-align: center;
     }
