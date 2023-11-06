@@ -1,4 +1,4 @@
-# Color Picker
+# Simple Color Picker
 
 ## 준비과정
 
