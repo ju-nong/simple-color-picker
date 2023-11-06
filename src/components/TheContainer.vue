@@ -1,11 +1,12 @@
 <template>
     <div>
         <ColorPickerButton />
+        <ColorList />
     </div>
 </template>
 
 <script setup lang="ts">
-import { ColorPickerButton } from "./index";
+import { ColorPickerButton, ColorList } from "./index";
 </script>
 
 <style lang="scss" scoped>

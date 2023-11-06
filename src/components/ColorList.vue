@@ -1,10 +1,21 @@
 <template>
     <ul class="color-list">
-        <slot />
+        <ColorItem
+            v-for="(color, index) in colorStore.list"
+            :key="index"
+            :hex="color"
+            @onRemoveColor="colorStore.removeColor(index)"
+        />
     </ul>
 </template>
 
-<script setup lang="ts"></script>
+<script setup lang="ts">
+import { ColorItem } from "./index";
+
+import { useColor } from "../stores";
+
+const colorStore = useColor();
+</script>
 
 <style lang="scss">
 .color-list {
