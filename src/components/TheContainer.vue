@@ -1,7 +1,18 @@
 <template>
-    <div></div>
+    <div>
+        <ColorPickerButton />
+    </div>
 </template>
 
-<script setup lang="ts"></script>
+<script setup lang="ts">
+import { ColorPickerButton } from "./index";
+</script>
 
-<style lang="scss"></style>
+<style lang="scss" scoped>
+div {
+    display: flex;
+    flex-direction: column;
+    row-gap: 1rem;
+    padding-bottom: 0.5rem;
+}
+</style>

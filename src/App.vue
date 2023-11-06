@@ -1,6 +1,6 @@
 <template>
     <div>
-        <TheContainer v-if="!supported" />
+        <TheContainer v-if="supported" />
         <SupportGuide v-else />
     </div>
     <!-- <div class="container">
@@ -54,16 +54,7 @@ onBeforeMount(() => {
 });
 // import { ColorList, ColorItem, TheFooter } from "./components";
 
-// const eyeDropper = ref(new window.EyeDropper());
-
 // const colors = ref<string[]>([]);
-
-// // 색깔 추출
-// async function handleColorPick() {
-//     const { sRGBHex } = await eyeDropper.value.open();
-
-//     colors.value.push(sRGBHex);
-// }
 
 // // 추출한 색깔 삭제
 // const handleRemoveColor = (_index: number) =>

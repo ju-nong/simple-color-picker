@@ -6,12 +6,18 @@ type State = {
 
 type Getter = {};
 
-type Action = {};
+type Action = {
+    pushColor: (color: string) => void;
+};
 
 export default defineStore<"colorStore", State, Getter, Action>("colorStore", {
     state: () => ({
         list: [],
     }),
     getters: {},
-    actions: {},
+    actions: {
+        pushColor(color: string) {
+            this.list.push(color);
+        },
+    },
 });
