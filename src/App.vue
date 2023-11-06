@@ -1,5 +1,9 @@
 <template>
-    <div class="container">
+    <div>
+        <TheContainer v-if="!supported" />
+        <SupportGuide v-else />
+    </div>
+    <!-- <div class="container">
         <button class="container-icon" @click="handleColorPick">
             <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -28,47 +32,54 @@
             />
         </ColorList>
 
+        <p v-show="colors.length" class="container-guide">
+            Click to copy to the clipboard
+        </p>
+        <TheFooter />
+
         {{ supported ? "지원합니다" : "지원 안 합니다" }}
-    </div>
+    </div> -->
 </template>
 
 <script setup lang="ts">
 import { ref, onBeforeMount } from "vue";
-
-import { ColorList, ColorItem } from "./components";
+import { SupportGuide, TheContainer } from "./components";
 
 // EyeDropper support check
 const supported = ref(false);
 const checkSupport = () => (supported.value = !!window.EyeDropper);
 
-const eyeDropper = ref(new window.EyeDropper());
-
-const colors = ref<string[]>([]);
-
-// 색깔 추출
-async function handleColorPick() {
-    const { sRGBHex } = await eyeDropper.value.open();
-
-    colors.value.push(sRGBHex);
-}
-
-// 추출한 색깔 삭제
-const handleRemoveColor = (_index: number) =>
-    (colors.value = colors.value.filter((_, index) => index !== _index));
-
 onBeforeMount(() => {
     checkSupport();
 });
+// import { ColorList, ColorItem, TheFooter } from "./components";
+
+// const eyeDropper = ref(new window.EyeDropper());
+
+// const colors = ref<string[]>([]);
+
+// // 색깔 추출
+// async function handleColorPick() {
+//     const { sRGBHex } = await eyeDropper.value.open();
+
+//     colors.value.push(sRGBHex);
+// }
+
+// // 추출한 색깔 삭제
+// const handleRemoveColor = (_index: number) =>
+//     (colors.value = colors.value.filter((_, index) => index !== _index));
 </script>
 
-<style lang="scss">
-.container {
+<style lang="scss" scoped>
+div {
     width: 300px;
-    min-height: 125px;
+}
+/* .container {
+    width: 300px;
     display: flex;
     flex-direction: column;
-    justify-items: center;
     row-gap: 1rem;
+    padding-bottom: 0.5rem;
 
     &-icon {
         padding: 1rem 0;
@@ -77,5 +88,9 @@ onBeforeMount(() => {
             height: 40px;
         }
     }
-}
+
+    &-guide {
+        text-align: center;
+    }
+} */
 </style>
