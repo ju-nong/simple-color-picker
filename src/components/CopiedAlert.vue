@@ -24,7 +24,7 @@ const template = useTemplate();
 const copyTrigger = computed(() => template.copyTrigger);
 
 const isON = ref(false);
-const $timeout = ref<null | undefined | number>(null);
+const $timeout = ref<null | undefined | ReturnType<typeof setTimeout>>(null);
 
 watch(copyTrigger, () => {
     // setTimeout ID가 있는 경우
