@@ -17,7 +17,7 @@
 -   manifest.json `v3`
     확장 프로그램 설정 파일
 
--   `vite build --watch`
+-   `npx vite build --watch`
     코드 변경 시, build 해줌
 
 ### URL
