@@ -48,15 +48,18 @@ const rgb = computed(() => {
     );
 
     return validHex
-        ? `rgb(${parseInt(validHex[1], 16)},
-            ${parseInt(validHex[2], 16)},
-            ${parseInt(validHex[3], 16)})`
+        ? `rgb(${parseInt(validHex[1], 16)}, ${parseInt(
+              validHex[2],
+              16,
+          )}, ${parseInt(validHex[3], 16)})`
         : "";
 });
 
 // 클립보드에 복사
 function handleCopy(color: string) {
     try {
+        console.log(color);
+
         navigator.clipboard.writeText(color);
 
         templateStore.actionCopy();
