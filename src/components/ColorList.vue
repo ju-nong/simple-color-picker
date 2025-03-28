@@ -4,7 +4,7 @@
             v-for="(color, index) in colorStore.list"
             :key="index"
             :hex="color"
-            @onRemoveColor="colorStore.removeColor(index)"
+            @onRemoveColor="handleRemoveColor(index)"
         />
     </ul>
 
@@ -12,13 +12,31 @@
 </template>
 
 <script setup lang="ts">
-import { computed } from "vue";
+import { computed, onBeforeMount } from "vue";
 import { ColorItem } from "./index";
 
-import { useColor } from "../stores";
+import { useColor, useTemplate } from "../stores";
+import { setStorage } from "../utils";
 
 const colorStore = useColor();
+const templateStore = useTemplate();
+
 const hasColor = computed(() => colorStore.list.length);
+
+function handleRemoveColor(index: number) {
+    const removedItemList = colorStore.list.filter(
+        (_, itemIndex) => itemIndex !== index,
+    );
+
+    colorStore.removeColor(index);
+
+    const { domain } = templateStore;
+    if (!domain) {
+        return;
+    }
+
+    setStorage(domain, removedItemList);
+}
 </script>
 
 <style lang="scss">

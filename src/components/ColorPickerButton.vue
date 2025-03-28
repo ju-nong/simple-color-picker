@@ -20,10 +20,15 @@
 </template>
 
 <script setup lang="ts">
+import { storeToRefs } from "pinia";
 import { ref } from "vue";
-import { useColor } from "../stores";
+import { useColor, useTemplate } from "../stores";
+
+import { updateArrayStorage } from "../utils";
 
 const colorStore = useColor();
+const templateStore = useTemplate();
+const { domain } = storeToRefs(templateStore);
 
 const eyeDropper = ref(new window.EyeDropper());
 
@@ -32,6 +37,12 @@ async function handleColorPick() {
     const { sRGBHex } = await eyeDropper.value.open();
 
     colorStore.pushColor(sRGBHex);
+
+    if (domain.value === null) {
+        return;
+    }
+
+    updateArrayStorage(domain.value, [sRGBHex]);
 }
 </script>
 
