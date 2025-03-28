@@ -58,13 +58,11 @@ const rgb = computed(() => {
 // 클립보드에 복사
 function handleCopy(color: string) {
     try {
-        console.log(color);
-
         navigator.clipboard.writeText(color);
 
         templateStore.actionCopy();
     } catch (error) {
-        console.log(error);
+        console.error(error);
     }
 }
 </script>
