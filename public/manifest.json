@@ -3,13 +3,7 @@
     "description": "This is Simple Color Picker",
     "version": "1.0.2",
     "manifest_version": 3,
-    "permissions": [
-        "clipboardWrite",
-        "tabs",
-        "storage",
-        "activeTab",
-        "scripting"
-    ],
+    "permissions": ["clipboardWrite", "storage", "activeTab"],
     "action": {
         "default_popup": "index.html",
         "default_icon": {
